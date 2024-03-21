@@ -1,14 +1,19 @@
 import { BrowserRouter } from "react-router-dom";
 import { AppRoutes } from "./routes";
-import { ThemeProvider } from "@emotion/react";
-import { LightTheme } from "./shared/themes";
+import { AppThemeProvider, DrawerProvider } from "./shared/contexts";
+import { SideBar } from "./shared/components";
+
 function App() {
   return (
-    <ThemeProvider theme={LightTheme}>
-    <BrowserRouter>
-      <AppRoutes/>
-    </BrowserRouter>
-    </ThemeProvider>
+    <AppThemeProvider>
+      <DrawerProvider>
+      <BrowserRouter>
+        <SideBar >
+          <AppRoutes />
+        </SideBar>
+      </BrowserRouter>
+      </DrawerProvider>
+    </AppThemeProvider>
   );
 }
 

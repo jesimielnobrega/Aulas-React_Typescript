@@ -1,10 +1,11 @@
 import { createTheme } from "@mui/material";
 import { blue, green } from "@mui/material/colors";
 
-export const LightTheme = createTheme({
+export const DarkTheme = createTheme({
     palette:{
+        mode:"dark",
         primary:{
-            main: blue[700],
+            main: blue[500],
             dark: blue[900],
             light: blue[300],
             contrastText: '#ffffff'
@@ -16,8 +17,13 @@ export const LightTheme = createTheme({
             contrastText: 'black'
         },
         background:{
-            default: '#f7f6f3',
-            paper: '#fffff3'
+            default: '#202124',
+            paper: '#303134'
+        }
+    },
+    typography:{
+        allVariants:{
+            color:"white"
         }
     }
 });
