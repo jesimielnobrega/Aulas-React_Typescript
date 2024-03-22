@@ -14,7 +14,7 @@ import {
 import React from "react";
 import { UseDrawerContext, useAppThemeContext } from "../../hooks";
 import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
-import { DarkMode } from "@mui/icons-material";
+import { DarkMode, LightMode } from "@mui/icons-material";
 
 interface ISideBarProps {
   children: React.ReactNode;
@@ -57,7 +57,7 @@ export const SideBar: React.FC<ISideBarProps> = ({ children }) => {
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down("sm"));
   const { toogleDrawer, isDrawerOpen, drawerOptions } = UseDrawerContext();
-  const { toogleTheme} = useAppThemeContext();
+  const { themeName ,toogleTheme} = useAppThemeContext();
   const handleOnClick = () =>{
     toogleDrawer();
     toogleTheme();
@@ -101,8 +101,8 @@ export const SideBar: React.FC<ISideBarProps> = ({ children }) => {
           <Box>
             <List component="nav">
               <ListItemButton onClick={handleOnClick}>
-                <ListItemIcon>
-                  <DarkMode/>
+                <ListItemIcon >
+                  {themeName == "Light" ? <DarkMode/> : <LightMode/>}
                 </ListItemIcon>
                 <ListItemText primary="Trocar o tema"/>
               </ListItemButton>
