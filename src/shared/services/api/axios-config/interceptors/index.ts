@@ -1,2 +1,2 @@
 export * from './ResponseInterceptor';
-export * from './errorInterceptor';
+export * from './ErrorInterceptor';

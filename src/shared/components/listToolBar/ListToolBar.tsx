@@ -1,6 +1,8 @@
 import { Add } from "@mui/icons-material";
 import { Box, Button, Paper, TextField, useTheme } from "@mui/material";
 
+import { Environment } from "../../environments";
+
 interface IListToolBarProps {
   OnNewButtonClick?: () => void;
   NewButtonText?: string;
@@ -11,12 +13,14 @@ interface IListToolBarProps {
 }
 
 export const ListToolBar: React.FC<IListToolBarProps> = ({
+
   OnNewButtonClick,
   OnSearchTextChange,
   SearchText = "",
   NewButtonText = "Novo",
   ShowNewButton = true,
   ShowSearchField = false,
+
 }) => {
   const theme = useTheme();
   return (
@@ -33,7 +37,7 @@ export const ListToolBar: React.FC<IListToolBarProps> = ({
       {ShowSearchField && (
         <TextField
           size="small"
-          placeholder="Pesquisar..."
+          placeholder={Environment.SEARCH_INPUT}
           value={SearchText}
           onChange={(e) => OnSearchTextChange?.(e.target.value)}
         />

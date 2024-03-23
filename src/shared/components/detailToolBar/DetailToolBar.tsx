@@ -89,6 +89,7 @@ export const DetailToolBar: React.FC<IDetailToolBarProps> = ({
       )}
       {(showSaveButton && !lastScreenSize)  && (
         <Button
+        size="small"
           startIcon={<Save />}
           variant="contained"
           disableElevation
@@ -100,7 +101,7 @@ export const DetailToolBar: React.FC<IDetailToolBarProps> = ({
             textOverflow="ellipsis"
             overflow="hidden"
           >
-            {!lastScreenSize ?"Salvar": undefined}
+            Salvar
           </Typography>
         </Button>
       )}
