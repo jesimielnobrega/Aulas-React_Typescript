@@ -46,11 +46,9 @@ const getAll = async (
 
 const getById = async (id: string): Promise<IListPeople | Error> => {
   try {
-
     const { data } = await Api.get<IListPeople>(`/pessoas/${id}`);
 
     return data;
-
   } catch (error) {
     console.log(error);
     return new Error(
@@ -59,13 +57,9 @@ const getById = async (id: string): Promise<IListPeople | Error> => {
   }
 };
 
-const deleteById = async (id: string): Promise<IListPeople | Error> => {
+const deleteById = async (id: string): Promise<undefined | Error> => {
   try {
-
-    const { data } = await Api.delete<IListPeople>(`/pessoas/${id}`);
-
-    return data;
-
+    await Api.delete<IListPeople>(`/pessoas/${id}`);
   } catch (error) {
     console.log(error);
     return new Error(
@@ -74,12 +68,12 @@ const deleteById = async (id: string): Promise<IListPeople | Error> => {
   }
 };
 
-const create = async (dataToCreate: Omit<IListPeople, "id">): Promise<string | Error> => {
+const create = async (
+  dataToCreate: Omit<IListPeople, "id">
+): Promise<string | Error> => {
   try {
-
     const { data } = await Api.post<IListPeople>("/pessoas", dataToCreate);
     return data.id;
-
   } catch (error) {
     console.log(error);
     return new Error(
@@ -88,13 +82,17 @@ const create = async (dataToCreate: Omit<IListPeople, "id">): Promise<string | E
   }
 };
 
-const updateById = async (id: string, dataToUpdate: IListPeopleForUpdate): Promise<IListPeople | Error> => {
+const updateById = async (
+  id: string,
+  dataToUpdate: IListPeopleForUpdate
+): Promise<IListPeople | Error> => {
   try {
-
-    const { data } = await Api.patch<IListPeople>(`/pessoas/${id}`, dataToUpdate);
+    const { data } = await Api.patch<IListPeople>(
+      `/pessoas/${id}`,
+      dataToUpdate
+    );
 
     return data;
-
   } catch (error) {
     console.log(error);
     return new Error(
@@ -108,7 +106,5 @@ export const PeopleService = {
   deleteById,
   updateById,
   getById,
-  getAll
-}
-
-
+  getAll,
+};
